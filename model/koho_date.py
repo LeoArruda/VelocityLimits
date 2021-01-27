@@ -24,7 +24,7 @@ class Date():
         # - Compare existing date with other date
         # - Return True if they are equal and False when they are not
 
-    def weeks_different(self, other):
+    def weeks_equal(self, other):
         """
         """
         # Todo:
