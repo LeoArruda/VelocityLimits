@@ -71,6 +71,15 @@ class Client():
         # - Evaluate Business rules
         # - update Client loads
         self.init_new_day(load_date)
+        dailyExceeded = self.is_daily_load_exceeded(load_amount)
+        weeklyExceeded = self.is_weekly_load_exceeded(load_amount)
+        if not dailyExceeded and not weeklyExceeded:
+            self.update_daily_load(load_amount)
+            self.update_weekly_load(load_amount)
+            return True
+        return False
+
+    
     
 
 
