@@ -52,6 +52,15 @@ class Client():
         # Todo:
         # - Evaluate if the load date is a new day and initiate the day
         # - Evaluate if the day is starting a new week and initiate the week
+        date = Date()
+        date.set_date(load_date)
+        if not self.last_load_date.dates_equal(date):
+            self.currentday_load_ammount = 0
+            self.daily_accum_loads = 0
+            if not self.last_load_date.dates_equal(date):
+                self.currentweek_load_ammount = 0
+            self.last_load_date = date
+
 
     def load_transaction(self, load_amount, load_date):
         """
@@ -61,6 +70,7 @@ class Client():
         # - Initiate a new day case possible
         # - Evaluate Business rules
         # - update Client loads
+        self.init_new_day(load_date)
     
 
 
