@@ -10,6 +10,7 @@ class Date():
         self.month = month
         self.year = year
     
+
     def set_date(self, date_string):
         """
         """
@@ -21,7 +22,6 @@ class Date():
         self.year = int(date_string[0:4])
         
 
-    
     def dates_equal(self, other):
         """
         """
