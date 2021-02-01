@@ -27,3 +27,9 @@ Your program should process lines from `input.txt` and return output in the form
 You're welcome to write your program in a general-purpose language of your choosing.
 
 We value well-structured, self-documenting code with sensible test coverage. Descriptive function and variable names are appreciated, as is isolating your business logic from the rest of your code.
+
+
+To run the tests:
+```
+python -m unittest discover -v -s tests -p *_test.py
+```

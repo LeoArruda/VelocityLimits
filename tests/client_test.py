@@ -6,7 +6,7 @@ class ClientTest(unittest.TestCase) :
     """
     Client_test class to evaluate Client's business rules. 
     """
-    def test_DailyLoadInTheSameDay(self):
+    def test_DailyLoadInTheSameDayCase(self):
         """
         """
         client = Client(1)
