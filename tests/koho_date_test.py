@@ -25,6 +25,25 @@ class KohoDateTest(unittest.TestCase) :
         self.assertEqual(firstDate.day, 15)
         self.assertEqual(firstDate.month, 1)
         self.assertEqual(firstDate.year, 2021)
-        
+
+    def test_SameWeek(self):
+        firstDate = Date(2021, 1, 10)
+        secondDate = Date(2021, 1, 11)
+        comparison = firstDate.weeks_equal(secondDate)
+        self.assertIs(comparison, False)
+
+        firstDate = Date(2021, 1, 9)
+        secondDate = Date(2021, 1, 10)
+        comparison = firstDate.weeks_equal(secondDate)
+        self.assertIs(comparison, True)
+
+        firstDate = Date(2021, 1, 30)
+        secondDate = Date(2021, 2, 1)
+        #print("1st Date {}  :  2nd Date {} ".format(firstDate.toString, secondDate.toString))
+        comparison = firstDate.weeks_equal(secondDate)
+        self.assertIs(comparison, False)
+
+
+
 
 

@@ -39,16 +39,12 @@ class Date():
     def weeks_equal(self, other):
         """
         """
-        # Todo:
-        # - Compare existing date/week with other date/week
-        # - Return True if they are equal and False when they are not
-        day = datetime(self.year, self.month, self.day)
+        day = datetime(self.year, self.month, self.day)    
         other_day = datetime(other.year, other.month, other.day)
-        delta_days = (other_day - day).days
-        if delta_days >= 7:
-            return True
-        if delta_days < 7 and other_day.weekday() < day.weekday():
-            return True
-        return False
+        return day.isocalendar()[1] == other_day.isocalendar()[1]
+
+    
+    def toString(self):
+        return "{}-{}-{}".format(self.year, self.month, self.day)
 
 
