@@ -18,7 +18,7 @@ class Client():
     def is_daily_load_exceeded(self, load_amount):
         """
         """
-        print('Max Daily Load : {}  Load Ammount : {}  calc: {}'.format(MAXDAILYLOAD, load_amount,(MAXDAILYLOAD - self.currentweek_load_ammount)))
+        #print('Max Daily Load : {}  Load Ammount : {}  calc: {}'.format(MAXDAILYLOAD, load_amount,(MAXDAILYLOAD - self.currentweek_load_ammount)))
         if (load_amount >  MAXDAILYLOAD) or \
             (self.daily_accum_loads >= MAXDAILYTRANSACTIONS) or \
             (MAXDAILYLOAD - self.currentday_load_ammount < load_amount):
@@ -29,7 +29,7 @@ class Client():
     def is_weekly_load_exceeded(self, load_amount):
         """
         """
-        print('Max Week Load : {}  Load Ammount : {}'.format(MAXWEEKLYLOAD, load_amount))
+        #print('Max Week Load : {}  Load Ammount : {}'.format(MAXWEEKLYLOAD, load_amount))
         if (load_amount >  MAXWEEKLYLOAD) or \
            (MAXWEEKLYLOAD - self.currentweek_load_ammount < load_amount): 
             return True
