@@ -8,29 +8,33 @@ class Client():
     Usage: myclient = Client(client_ID)
     """
     def __init__(self, client_id):
-        self.client_id = client_id
-        self.daily_accum_loads = 0
-        self.currentday_load_ammount = 0
-        self.currentweek_load_ammount = 0
-        self.last_load_date = Date()
+        self.client_id = client_id  # Client Unique ID
+        self.daily_accum_loads = 0  # Accumulator to increase at every transaction
+        self.currentday_load_ammount = 0  #  Accumulate the load ammount value daily
+        self.currentweek_load_ammount = 0 # Accumulate the load ammount value weekly
+        self.last_load_date = Date() # Register the last date
 
 
     def is_daily_load_exceeded(self, load_amount):
         """
         """
+        print('Max Daily Load : {}  Load Ammount : {}  calc: {}'.format(MAXDAILYLOAD, load_amount,(MAXDAILYLOAD - self.currentweek_load_ammount)))
         if (load_amount >  MAXDAILYLOAD) or \
             (self.daily_accum_loads >= MAXDAILYTRANSACTIONS) or \
-            (MAXDAILYLOAD - self.currentweek_load_ammount < load_amount) :
+            (MAXDAILYLOAD - self.currentday_load_ammount < load_amount):
             return True
         return False
+
 
     def is_weekly_load_exceeded(self, load_amount):
         """
         """
+        print('Max Week Load : {}  Load Ammount : {}'.format(MAXWEEKLYLOAD, load_amount))
         if (load_amount >  MAXWEEKLYLOAD) or \
-            (MAXWEEKLYLOAD - self.currentday_load_ammount < load_amount) :
+           (MAXWEEKLYLOAD - self.currentweek_load_ammount < load_amount): 
             return True
         return False
+
 
     def update_daily_load(self, load_amount):
         """

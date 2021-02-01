@@ -7,7 +7,7 @@ class KohoDateTest(unittest.TestCase) :
     Koho_date class to evaluate date business rules and corner cases. 
     """
 
-    def test_IsSameDate(self):
+    def test_IsSameDateCase(self):
         firstDate = Date(2021, 1, 10)
         secondDate = Date(2021, 1, 12)
         comparison = firstDate.dates_equal(secondDate)
@@ -18,7 +18,7 @@ class KohoDateTest(unittest.TestCase) :
         comparison = firstDate.dates_equal(secondDate)
         self.assertIs(comparison, True)
 
-    def test_InitDate(self):
+    def test_InitDateCase(self):
         firstDate = Date()
         dateString = "2021-01-15"
         firstDate.set_date(dateString)
@@ -26,7 +26,7 @@ class KohoDateTest(unittest.TestCase) :
         self.assertEqual(firstDate.month, 1)
         self.assertEqual(firstDate.year, 2021)
 
-    def test_SameWeek(self):
+    def test_SameWeekCase(self):
         firstDate = Date(2021, 1, 10)
         secondDate = Date(2021, 1, 11)
         comparison = firstDate.weeks_equal(secondDate)
