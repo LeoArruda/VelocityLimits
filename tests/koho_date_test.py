@@ -18,3 +18,13 @@ class KohoDateTest(unittest.TestCase) :
         comparison = firstDate.dates_equal(secondDate)
         self.assertIs(comparison, True)
 
+    def test_InitDate(self):
+        firstDate = Date()
+        dateString = "2021-01-15"
+        firstDate.set_date(dateString)
+        self.assertEqual(firstDate.day, 15)
+        self.assertEqual(firstDate.month, 1)
+        self.assertEqual(firstDate.year, 2021)
+        
+
+
