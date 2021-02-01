@@ -54,7 +54,7 @@ def load_files(filename=INPUTFILE) -> None:
                 else:
                     output.write(json.dumps(output_dictionary)+'\n')
             
-            print('Processing line: {} '.format(i+1))
+            #print('Processing line: {} '.format(i+1))
 
         
 
