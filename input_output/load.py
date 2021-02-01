@@ -3,7 +3,7 @@ import json
 from model.client import Client
 from config.config import INPUTFILE, OUTPUTFILE
 
-def load_files(filename=INPUTFILE):
+def load_files(filename=INPUTFILE) -> None:
     """
     Loader
     """
@@ -24,10 +24,14 @@ def load_files(filename=INPUTFILE):
             customer_id = loaded_data["customer_id"]
             transaction_ammount = float(loaded_data["load_amount"][1::])
             transaction_date = loaded_data["time"][0:10]
+
+            # Create a dictionay to build the output record
+            output_dictionary = {}
+
             if customer_id not in customer_loaded_ids:
                 customer_loaded_ids[customer_id] = set()
             
-            dic = {}
+            # Evaluate and ensure we're only loading unique transactions
             if transaction_id not in customer_loaded_ids[customer_id]:
                 customer_loaded_ids[customer_id].add(transaction_id)
                 if customer_id not in clients:
@@ -35,18 +39,20 @@ def load_files(filename=INPUTFILE):
                     clients[customer_id] = client
                 else:
                     client = clients[customer_id]
-                
-                if client.load_transaction(transaction_ammount, transaction_date):
-                    dic["accepted"]=True
-                else:
-                    dic["accepted"]=False
-                dic["id"] = transaction_id
-                dic["customer_id"] = customer_id
 
-                if i == len(lines)-1:
-                    output.write(json.dumps(dic))
+                # Build a new output record into out dictionary
+                output_dictionary["id"] = transaction_id
+                output_dictionary["customer_id"] = customer_id
+                if client.load_transaction(transaction_ammount, transaction_date):
+                    output_dictionary["accepted"]=True
                 else:
-                    output.write(json.dumps(dic)+'\n')
+                    output_dictionary["accepted"]=False
+                
+                # Write/Append the output file
+                if i == len(lines)-1:
+                    output.write(json.dumps(output_dictionary))
+                else:
+                    output.write(json.dumps(output_dictionary)+'\n')
             
             print('Processing line: {} '.format(i+1))
 
