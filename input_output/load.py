@@ -5,16 +5,17 @@ from config.config import INPUTFILE, OUTPUTFILE
 
 def load_files(filename=INPUTFILE) -> None:
     """
-    Loader
+    This function reads the param filename and iterates every row.
+    It the transactions from each row, eavaluate against the business rules, and saves 
+    the results into the output file.
+    :param filename: string input filename.
+    :return: None.
     """
-    # Todo:
-    # - Open the filename
-    # - Store the clients
-    # - Store the loaded transactions
-    # - Write the expected output
-    
+    # auxiliary dictionaries to control
+    # transactions and clients loaded
     customer_loaded_ids = {}
     clients = {}
+    # open/create the output file.
     output = open(OUTPUTFILE,'w')
     with open(INPUTFILE) as file:
         lines = file.readlines()
@@ -53,9 +54,6 @@ def load_files(filename=INPUTFILE) -> None:
                     output.write(json.dumps(output_dictionary))
                 else:
                     output.write(json.dumps(output_dictionary)+'\n')
-            
-            #print('Processing line: {} '.format(i+1))
 
-        
 
     output.close()

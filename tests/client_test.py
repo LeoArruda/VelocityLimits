@@ -16,6 +16,7 @@ class ClientTest(unittest.TestCase) :
 
     def test_DailyLoadInTheSameDayCase(self):
         """
+        Test case to evaluate if the loads are in the same day. 
         """
         loading_date = "2021-01-12"
         self.client.init_new_day(loading_date)
@@ -29,6 +30,7 @@ class ClientTest(unittest.TestCase) :
 
     def test_DailyLoadInDifferentDaysCase(self):
         """
+        Test case to evaluate if the loads are in different days. 
         """
         loading_date = "2021-01-13"
         self.client.init_new_day(loading_date)
@@ -42,6 +44,7 @@ class ClientTest(unittest.TestCase) :
 
     def test_FirstTimeLoadCase(self):
         """
+        Test case to evaluate the first time load. 
         """
         loading_date = "2021-01-13"
         self.client.currentday_load_ammount = 0
@@ -56,6 +59,8 @@ class ClientTest(unittest.TestCase) :
     
     def test_UpdateDailyTansactionsLoadsCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the daily limit. 
         """
         self.client.currentday_load_ammount = 4000
         self.client.daily_accum_loads = 4
@@ -66,6 +71,7 @@ class ClientTest(unittest.TestCase) :
 
     def test_UpdateDailyAmmountLoadsCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount. 
         """
         self.client.update_daily_load(1500)
         # Test the load ammount and accumulator numbers
@@ -75,13 +81,17 @@ class ClientTest(unittest.TestCase) :
 
     def test_UpdateDailyAmmountLoadsSuccessCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the daily limit. 
         """
         # Test if load ammount exceeds the daily limits
         self.assertEqual(self.client.is_daily_load_exceeded(3000), False)
 
     
     def test_UpdateDailyAmmountLoadsExceededCase(self):
-        """
+       """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the daily limit. 
         """
         # Test if load ammount exceeds the daily limits
         self.assertEqual(self.client.is_daily_load_exceeded(3100), True)
@@ -89,6 +99,8 @@ class ClientTest(unittest.TestCase) :
     
     def test_UpdateDailyAmmountLoadsCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the daily limit. 
         """
         # Test if load ammount exceeds the daily limits
         self.assertEqual(self.client.is_daily_load_exceeded(2500), False)
@@ -96,6 +108,8 @@ class ClientTest(unittest.TestCase) :
 
     def test_UpdateDailyAccumLoadExceedCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the daily transactions limit. 
         """
         self.client.currentday_load_ammount = 2000
         self.client.daily_accum_loads = 1
@@ -105,6 +119,8 @@ class ClientTest(unittest.TestCase) :
 
     def test_UpdateWeeklyAccumLoadExceedCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        exceeding the weekly limit. 
         """
         self.client.currentweek_load_ammount = 11000
         # Test if load ammount exceeds the daily limits
@@ -113,6 +129,8 @@ class ClientTest(unittest.TestCase) :
 
     def test_UpdateWeeklyAccumLoadNotExceedCase(self):
         """
+        Test case to evaluate an update value into the client's load_ammount
+        not exceeding the weekly limit. 
         """
         self.client.currentweek_load_ammount = 11000
         # Test if load ammount exceeds the daily limits
@@ -121,6 +139,9 @@ class ClientTest(unittest.TestCase) :
 
     def test_LoadTransactionsSeveralDay(self):
         """
+        Test case to evaluate the update of several transactions client's records.
+        This is a more comprehensive test case, covering same day scenarios, different days,
+        different weeks and several different ammounts. 
         """
         client = Client(2)
         # First Load

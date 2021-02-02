@@ -4,6 +4,8 @@ from input_output.load import load_files
 
 class IOLoad_Test(unittest.TestCase):
     """
+    load_file tests to evaluate the success of the entire solution
+    once compared to the provided output.txt file. 
     """
     def test_LoadAndCompareResultsCase(self):
         input_file = "./data/input.txt"

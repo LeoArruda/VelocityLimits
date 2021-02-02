@@ -8,6 +8,9 @@ class KohoDateTest(unittest.TestCase) :
     """
 
     def test_IsSameDateCase(self):
+        """
+        Test case to evaluate the same day evaluation method. 
+        """
         firstDate = Date(2021, 1, 10)
         secondDate = Date(2021, 1, 12)
         comparison = firstDate.dates_equal(secondDate)
@@ -19,6 +22,9 @@ class KohoDateTest(unittest.TestCase) :
         self.assertIs(comparison, True)
 
     def test_InitDateCase(self):
+        """
+        Test case to evaluate the setup of a new date method. 
+        """
         firstDate = Date()
         dateString = "2021-01-15"
         firstDate.set_date(dateString)
@@ -27,6 +33,9 @@ class KohoDateTest(unittest.TestCase) :
         self.assertEqual(firstDate.year, 2021)
 
     def test_SameWeekCase(self):
+        """
+        Test case to evaluate the same week evaluation method. 
+        """
         firstDate = Date(2021, 1, 10)
         secondDate = Date(2021, 1, 11)
         comparison = firstDate.weeks_equal(secondDate)

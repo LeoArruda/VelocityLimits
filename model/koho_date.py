@@ -2,7 +2,10 @@ from datetime import datetime
 
 class Date():
     """
-    Creates a Date object
+    Date object to handle all method and evaluations for date tests
+    Usage: mydate = Client()
+    :param None: .
+    :return: Object.
     """
     def __init__(self, year=1980, month=1, day=1) -> None:
         super().__init__()
@@ -13,6 +16,9 @@ class Date():
 
     def set_date(self, date_string):
         """
+        Method to set a new day.
+        :param date_string: String date.
+        :return: None.
         """
         # Todo:
         # - Parse the received string into day, month, and year.
@@ -24,6 +30,9 @@ class Date():
 
     def dates_equal(self, other):
         """
+        Method to compare dates.
+        :param other: Object date.
+        :return: Boolean.
         """
         # Todo:
         # - Compare existing date with other date
@@ -38,6 +47,9 @@ class Date():
 
     def weeks_equal(self, other):
         """
+        Method to compare Weeks.
+        :param other: Object date.
+        :return: Boolean.
         """
         day = datetime(self.year, self.month, self.day)    
         other_day = datetime(other.year, other.month, other.day)
@@ -46,6 +58,8 @@ class Date():
     
     def toString(self):
         """
+        Method to parse the object date property into string format.
+        :return: String.
         """
         return "{}-{}-{}".format(self.year, self.month, self.day)
 
