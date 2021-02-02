@@ -89,7 +89,7 @@ class ClientTest(unittest.TestCase) :
 
     
     def test_UpdateDailyAmmountLoadsExceededCase(self):
-       """
+        """
         Test case to evaluate an update value into the client's load_ammount
         exceeding the daily limit. 
         """
