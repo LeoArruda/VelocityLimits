@@ -20,9 +20,6 @@ class Date():
         :param date_string: String date.
         :return: None.
         """
-        # Todo:
-        # - Parse the received string into day, month, and year.
-        # - Set the respective properties
         self.day = int(date_string[8:10])
         self.month = int(date_string[5:7])
         self.year = int(date_string[0:4])
@@ -34,9 +31,6 @@ class Date():
         :param other: Object date.
         :return: Boolean.
         """
-        # Todo:
-        # - Compare existing date with other date
-        # - Return True if they are equal and False when they are not
         day = self.day == other.day
         month = self.month == other.month
         year = self.year == other.year
